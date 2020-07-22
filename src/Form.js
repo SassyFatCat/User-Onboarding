@@ -34,8 +34,8 @@ submit()
 return (
 <div className="formContainer">
 <form className="Form" onSubmit={onSubmit}>
-    <label>First Name:
-        <input 
+    <label>First Name:&nbsp;&nbsp;
+        <input
         type="text"
         name="firstName"
         value={forms.firstName}
@@ -43,7 +43,7 @@ return (
         ></input>
     </label>
     
-    <label>Email:
+    <label>Email:&nbsp;&nbsp;
         <input
         type="email"
         name="email"
@@ -52,7 +52,7 @@ return (
         ></input>
     </label>
 
-    <label>Password:
+    <label>Password:&nbsp;&nbsp;
         <input
             type="password"
             name="password"
@@ -61,7 +61,7 @@ return (
         ></input>
     </label>
 
-    <label>Do you accept our Terms of Service?
+    <label>Do you accept our Terms of Service?&nbsp;&nbsp;
         <input
             type="checkbox"
             name="ToS"
