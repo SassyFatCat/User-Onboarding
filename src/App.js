@@ -21,11 +21,13 @@ const initialFormErrors = {
   password: '',
   ToS: ''
 }
+const initialDisabled = true
 
 ///////////////////// STATE //////////////////////
 const [users, setUsers] = useState(initialUsers)
 const [forms, setForms] = useState(initialForms)
 const [formErrors, setFormErrors] = useState(initialFormErrors)
+const [disabled, setDisabled] = useState(initialDisabled)
 
 ///////////////////// NETWORK HELPERS //////////////////////
 const getUsers = () => {
@@ -83,7 +85,14 @@ postUser(newUser)
 ///////////////////// SIDE EFFECTS //////////////////////
 useEffect(() => {
   getUsers()
-}, [])
+}, []);
+
+useEffect(() => {
+  FormSchema.isValid(forms)
+    .then(valid => {
+    setDisabled(!valid)
+  })
+}, [forms])
 
   return (
     <div className="App">
@@ -96,7 +105,7 @@ useEffect(() => {
 
         <div className="Form">
           <h1>Form</h1>
-          <Form formErrors={formErrors} inputChange={inputChange} submit={submit} forms={forms} />
+          <Form disabled={disabled} formErrors={formErrors} inputChange={inputChange} submit={submit} forms={forms} />
         </div>
 
     </div>

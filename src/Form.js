@@ -7,6 +7,7 @@ const {
     submit,
     forms,
     formErrors,
+    disabled
 } = props;
 
 ///////////////////// HELPER FUNCTIONS //////////////////////
@@ -74,7 +75,7 @@ return (
     <p>{formErrors.password}</p>
     <p>{formErrors.ToS}</p>
 
-    <button>submit</button>
+    <button disabled={disabled}>submit</button>
 
 </form>
 )    
