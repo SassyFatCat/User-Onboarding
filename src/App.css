@@ -1,9 +1,13 @@
+html {
+  font-size: 67.5%;
+}
+
 .App {
   text-align: center;
   display: flex;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .App-logo {
@@ -41,9 +45,15 @@
   }
 }
 
+.formContainer {
+  width: 55%;
+}
+
 .Form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
 }
 
 .UserCard {
@@ -56,5 +66,12 @@
 }
 
 .Users {
-  width: 30%;
+  width: 25%;
+  margin-left: 10%;
+}
+
+.error {
+  display: inline;
+  font-size: 1rem;
+  margin-left: 2%;
 }

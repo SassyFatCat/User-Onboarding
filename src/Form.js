@@ -39,9 +39,9 @@ return (
         name="firstName"
         value={forms.firstName}
         onChange={onChange}
-        ></input>
+        ></input><p className="error">{formErrors.firstName}</p>
     </label>
-
+    
     <label>Email:
         <input
         type="email"
@@ -70,10 +70,10 @@ return (
 
     </label>
 
-    <p>{formErrors.firstName}</p>
-    <p>{formErrors.email}</p>
-    <p>{formErrors.password}</p>
-    <p>{formErrors.ToS}</p>
+    
+    <p className="error">{formErrors.email}</p>
+    <p className="error">{formErrors.password}</p>
+    <p className="error">{formErrors.ToS}</p>
 
     <button disabled={disabled}>submit</button>
 

@@ -103,8 +103,8 @@ useEffect(() => {
         })}
       </div>
 
-        <div className="Form">
-          <h1>Form</h1>
+        <div className="formContainer">
+        <h1>Form</h1>
           <Form disabled={disabled} formErrors={formErrors} inputChange={inputChange} submit={submit} forms={forms} />
         </div>
 
