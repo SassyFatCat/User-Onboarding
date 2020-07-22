@@ -32,6 +32,7 @@ submit()
 }
 
 return (
+<div className="formContainer">
 <form className="Form" onSubmit={onSubmit}>
     <label>First Name:
         <input 
@@ -39,7 +40,7 @@ return (
         name="firstName"
         value={forms.firstName}
         onChange={onChange}
-        ></input><p className="error">{formErrors.firstName}</p>
+        ></input>
     </label>
     
     <label>Email:
@@ -69,14 +70,14 @@ return (
         ></input>
 
     </label>
-
-    
+    <button disabled={disabled}>submit</button>
+</form>
+<div className="errorContainer">
+    <p className="error">{formErrors.firstName}</p>
     <p className="error">{formErrors.email}</p>
     <p className="error">{formErrors.password}</p>
     <p className="error">{formErrors.ToS}</p>
-
-    <button disabled={disabled}>submit</button>
-
-</form>
+</div>
+</div>
 )    
 }
