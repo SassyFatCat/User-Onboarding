@@ -16,6 +16,13 @@ const value = event.target.value;
 inputChange(name, value)
 };
 
+const onCheckboxChange = event => {
+const name = event.target.name
+const checked = event.target.checked
+
+inputChange(name, checked)
+}
+
 const onSubmit = event => {
 event.preventDefault();
 
@@ -23,7 +30,7 @@ submit()
 }
 
 return (
-<form onSubmit={onSubmit}>
+<form className="Form" onSubmit={onSubmit}>
     <label>First Name:
         <input 
         type="text"
@@ -32,8 +39,37 @@ return (
         onChange={onChange}
         ></input>
     </label>
+
+    <label>Email:
+        <input
+        type="email"
+        name="email"
+        value={forms.email}
+        onChange={onChange}
+        ></input>
+    </label>
+
+    <label>Password:
+        <input
+            type="password"
+            name="password"
+            value={forms.password}
+            onChange={onChange}
+        ></input>
+    </label>
+
+    <label>Do you accept our Terms of Service?
+        <input
+            type="checkbox"
+            name="ToS"
+            checked={forms.ToS === true}
+            onChange={onCheckboxChange}
+        ></input>
+
+    </label>
+
     <button>submit</button>
-    
+
 </form>
 )    
 }

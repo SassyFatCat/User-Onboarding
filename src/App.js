@@ -9,7 +9,10 @@ function App() {
 ///////////////////// INITIAL STATES //////////////////////
 const initialUsers = [];
 const initialForms = {
-  firstName: ""
+  firstName: "",
+  email: "",
+  password: "",
+  ToS: false
 };
 
 ///////////////////// STATE //////////////////////
