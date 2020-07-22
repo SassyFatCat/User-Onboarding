@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   display: flex;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   justify-content: space-around;
 }
@@ -44,4 +44,17 @@
 .Form {
   display: flex;
   flex-direction: column;
+}
+
+.UserCard {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10% 0;
+  width: 100%;
+}
+
+.Users {
+  width: 30%;
 }

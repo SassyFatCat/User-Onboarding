@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
-import logo from './logo.svg';
+import * as yup from 'yup'
 import './App.css';
 import UserCard from './UserCard'
 import Form from './Form'
+import FormSchema from './validation/FormSchema'
 
 function App() {
 ///////////////////// INITIAL STATES //////////////////////
@@ -14,10 +15,17 @@ const initialForms = {
   password: "",
   ToS: false
 };
+const initialFormErrors = {
+  firstName: '',
+  email: '',
+  password: '',
+  ToS: ''
+}
 
 ///////////////////// STATE //////////////////////
 const [users, setUsers] = useState(initialUsers)
 const [forms, setForms] = useState(initialForms)
+const [formErrors, setFormErrors] = useState(initialFormErrors)
 
 ///////////////////// NETWORK HELPERS //////////////////////
 const getUsers = () => {
@@ -40,6 +48,22 @@ const postUser = newUser => {
 
 ///////////////////// FORM ACTIONS //////////////////////
 const inputChange = (name, value) => {
+yup
+  .reach(FormSchema, name)
+  .validate(value)
+  .then(valid => {
+    setFormErrors({
+      ...formErrors,
+      [name]: ""
+    })
+  })
+  .catch(invalid => {
+    setFormErrors({
+      ...formErrors,
+      [name]: invalid.errors[0]
+    })
+  })
+
   setForms({
     ...forms,
     [name]: value
@@ -48,7 +72,10 @@ const inputChange = (name, value) => {
 
 const submit = () => {
 const newUser = {
-  first_name: forms.firstName.trim()
+  first_name: forms.firstName.trim(),
+  email: forms.email.trim(),
+  password: forms.password,
+  ToS: forms.ToS
 };
 postUser(newUser)
 }
@@ -69,7 +96,7 @@ useEffect(() => {
 
         <div className="Form">
           <h1>Form</h1>
-          <Form inputChange={inputChange} submit={submit} forms={forms} />
+          <Form formErrors={formErrors} inputChange={inputChange} submit={submit} forms={forms} />
         </div>
 
     </div>

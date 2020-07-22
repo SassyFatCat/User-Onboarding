@@ -5,7 +5,8 @@ export default function Form(props) {
 const {
     inputChange,
     submit,
-    forms
+    forms,
+    formErrors,
 } = props;
 
 ///////////////////// HELPER FUNCTIONS //////////////////////
@@ -67,6 +68,11 @@ return (
         ></input>
 
     </label>
+
+    <p>{formErrors.firstName}</p>
+    <p>{formErrors.email}</p>
+    <p>{formErrors.password}</p>
+    <p>{formErrors.ToS}</p>
 
     <button>submit</button>
 
