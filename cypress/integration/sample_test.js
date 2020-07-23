@@ -26,12 +26,19 @@ describe('Inputs and submit button', () => {
 
     it('Can check the ToS checkbox', () => {
         cy.get('input[name="ToS"]').check()
-            .should('have.value', 'on')
+            .should('be.checked')
     });
 
     it('Can submit the form', () => {
         cy.get('button').click()
     });
+
+    it('Checks if forms are empty after submit', () => {
+        cy.get('input[name="firstName"]').should('have.value', '');
+        cy.get('input[name="email"]').should('have.value', '');
+        cy.get('input[name="password"]').should('have.value', '');
+        cy.get('input[name="ToS"]').should('not.be.checked');
+    })
 })
 
 describe('Check for form validation message if input is empty', () => {
@@ -65,4 +72,9 @@ describe('Check for form validation message if input is empty', () => {
         cy.get('.errorContainer p:nth-of-type(3)')
             .should('have.text', 'Minimum of 7 characters required')
     });
+
+    it('Submit button should be disabled with invalid entries', () => {
+        cy.get('button')
+            .should('be.disabled')
+    })
 })
